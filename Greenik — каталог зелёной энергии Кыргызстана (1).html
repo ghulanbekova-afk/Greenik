@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Greenik — зелёная энергия под ваш бюджет</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{--g:#315C46;--g2:#A8BEA5;--bg:#F7F8F4;--card:#fff;--tx:#252B27;--mu:#737D75;--bd:#E5E9E2;--soft:#EEF3EC;--warn:#9A6B1F;--r:16px;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--g:#7FB596;--g2:#3F5A49;--bg:#141815;--card:#1C221E;--tx:#E8EDE8;--mu:#9AA59C;--bd:#2B332D;--soft:#222A24;--warn:#D9A850}}
+:root[data-theme="dark"]{--g:#7FB596;--g2:#3F5A49;--bg:#141815;--card:#1C221E;--tx:#E8EDE8;--mu:#9AA59C;--bd:#2B332D;--soft:#222A24;--warn:#D9A850}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+h1,h2,h3{line-height:1.15;margin:0 0 .5em;letter-spacing:-.02em}h1{font-size:clamp(2rem,6vw,3.4rem)}h2{font-size:1.7rem}h3{font-size:1.1rem}p{margin:0 0 .8em}
+.w{max-width:1120px;margin:0 auto;padding:0 18px}.sec{padding:44px 0}.mu{color:var(--mu)}.sm{font-size:.86rem}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--bd);z-index:20}
+.nav{display:flex;align-items:center;gap:6px;height:60px;overflow-x:auto}.nav::-webkit-scrollbar{display:none}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.2rem;color:var(--g);cursor:pointer;margin-right:auto;flex:none}
+.nav a{padding:8px 10px;border-radius:10px;color:var(--mu);font-size:.92rem;cursor:pointer;white-space:nowrap;flex:none}.nav a.on,.nav a:hover{color:var(--g);background:var(--soft)}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--g);background:var(--g);color:#fff;padding:11px 18px;border-radius:12px;font:600 .95rem Inter,sans-serif;cursor:pointer;transition:.15s;flex:none}
+:root[data-theme="dark"] .btn{color:#10231A}.btn:hover{transform:translateY(-1px)}.btn.o{background:transparent;color:var(--g)}.btn.s{padding:7px 12px;font-size:.85rem}.btn.on{background:var(--soft);color:var(--g)}
+.btn:focus-visible,input:focus-visible,select:focus-visible,.opt:focus-visible{outline:2px solid var(--g);outline-offset:2px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:18px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.hero{display:grid;gap:28px;grid-template-columns:1.1fr .9fr;align-items:center;padding:44px 0}
+@media(max-width:760px){.hero{grid-template-columns:1fr}}
+.tag{display:inline-block;font-size:.75rem;padding:3px 9px;border-radius:99px;background:var(--soft);color:var(--g);margin:0 4px 4px 0}.tag.w2{color:var(--warn)}
+.ico{width:52px;height:52px;border-radius:14px;background:var(--soft);display:grid;place-items:center;font-size:1.6rem;margin-bottom:10px}
+.pr{display:flex;justify-content:space-between;gap:8px;border-top:1px solid var(--bd);padding:7px 0;font-size:.9rem}.pr b{text-align:right}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input,select{font:inherit;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx);min-width:0}
+.filters{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:14px 0}
+.opts{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));margin:18px 0}
+.opt{border:1.5px solid var(--bd);background:var(--card);border-radius:14px;padding:16px;cursor:pointer;text-align:left;font:inherit;color:var(--tx);transition:.15s}.opt:hover{border-color:var(--g2)}.opt.on{border-color:var(--g);background:var(--soft)}
+.bar{height:6px;background:var(--bd);border-radius:9px;overflow:hidden;margin:10px 0 20px}.bar i{display:block;height:100%;background:var(--g);transition:.3s}
+.av{width:44px;height:44px;border-radius:50%;background:var(--g);display:grid;place-items:center;color:#fff}
+.stat b{display:block;font-size:1.5rem;color:var(--g);letter-spacing:-.02em}
+.err{color:#B3402F;font-size:.85rem;margin:4px 0}.modal{position:fixed;inset:0;background:#0008;z-index:50;display:grid;place-items:center;padding:16px}.modal>div{max-height:88vh;overflow:auto;max-width:560px;width:100%}
+.skel{height:230px;border-radius:var(--r);background:linear-gradient(90deg,var(--soft),var(--bd),var(--soft));background-size:200%;animation:sk 1.1s infinite}@keyframes sk{to{background-position:-200%}}
+table{border-collapse:collapse;width:100%;min-width:560px}td,th{padding:10px;border-bottom:1px solid var(--bd);text-align:left;vertical-align:top;font-size:.9rem}th{font-weight:600}.sc{overflow-x:auto}
+.diff{background:var(--soft)}.pick{position:relative}.pick>.lab{font-size:.8rem;font-weight:600;color:var(--g);margin-bottom:8px}
+footer{border-top:1px solid var(--bd);padding:26px 0;color:var(--mu);font-size:.85rem}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style></head><body>
+<header><div class="w nav" id="nav"></div></header>
+<main class="w" id="app"></main>
+<footer><div class="w">Greenik — прототип для хакатона. Все цены и показатели экономии — демонстрационные и примерные; реальный результат зависит от тарифов, климата, оборудования и монтажа. Данные не взяты у реальных поставщиков.</div></footer>
+<div id="md"></div>
+<script>
+const CATS=["Солнечные панели","Солнечные водонагреватели","Тепловые насосы","Обогреватели","Утепление и окна","Ветрогенераторы","Накопители энергии","Освещение","Экономия воды","Биогаз"];
+const GOALS={elec:"Снизить расходы на электричество",heat:"Сэкономить на отоплении",hot:"Нагревать воду дешевле",water:"Снизить потребление воды",renew:"Использовать возобновляемую энергию",eff:"Сделать дом энергоэффективнее"};
+const HOUS={apt:"Квартира",house:"Частный дом",dacha:"Дача",biz:"Малый бизнес"};
+const RES={electricity:"Электричество",gas:"Газ",central:"Центральное отопление",sun:"Солнечный свет",wind:"Ветер",bio:"Биомасса / органические отходы",unknown:"Не знаю — помоги разобраться"};
+const REG={"Бишкек":1,"Ош":.85,"Чуйская область":1,"Иссык-Кульская область":1.15,"Нарынская область":1.3,"Таласская область":1.1,"Джалал-Абадская область":.85,"Баткенская область":.8};
+const A=["apt","house","dacha","biz"],H=["house","dacha","biz"];
+// price/inst в KGS (демо); pct — доля от счёта; s — демо-диапазон в месяц; heat:true — масштабируется по региону
+const D=[
+{id:1,n:"Набор LED-ламп (10 шт.)",c:7,i:"💡",p:1500,in:0,t:A,g:["elec","eff"],nd:["electricity"],pct:[.08,.15],bill:"elec",s:[100,250],d:"Заменяют лампы накаливания и галогенные: тот же свет, в 5–8 раз меньше энергии.",rq:"Установка своими руками, подходят стандартные патроны.",tg:["Для небольшого бюджета"]},
+{id:2,n:"Умные розетки с таймером (4 шт.)",c:7,i:"🔌",p:2500,in:0,t:A,g:["elec","eff"],nd:["electricity"],pct:[.03,.08],bill:"elec",s:[60,200],d:"Отключают приборы в режиме ожидания и бойлер по расписанию.",rq:"Нужен Wi-Fi для удалённого управления.",tg:["Для небольшого бюджета"]},
+{id:3,n:"Уплотнитель для окон и дверей",c:4,i:"🧱",p:3000,in:0,t:A,g:["heat","eff"],nd:[],pct:[.05,.12],bill:"heat",s:[250,600],heat:1,d:"Закрывает щели, через которые зимой уходит тепло.",rq:"Монтаж самостоятельно, 1–2 часа.",tg:["Для небольшого бюджета","Экономия на отоплении"]},
+{id:4,n:"Аэраторы для кранов (набор)",c:8,i:"🚿",p:800,in:0,t:A,g:["water","eff"],nd:[],s:[150,400],d:"Насадки смешивают воду с воздухом: напор прежний, расход меньше.",rq:"Откручиваются и ставятся вручную.",tg:["Для небольшого бюджета"]},
+{id:5,n:"Программируемый термостат",c:3,i:"🌡️",p:4500,in:1500,t:A.slice(1),g:["heat","eff"],nd:["electricity"],pct:[.08,.15],bill:"heat",s:[300,800],heat:1,d:"Поддерживает нужную температуру по расписанию и не греет пустой дом.",rq:"Совместим не со всеми котлами; лучше проверить у мастера.",tg:["Экономия на отоплении"]},
+{id:6,n:"Инфракрасный панельный обогреватель",c:3,i:"♨️",p:12000,in:0,t:A,g:["heat"],nd:["electricity"],s:[200,700],heat:1,d:"Греет предметы и людей, а не воздух — удобно для локального обогрева.",rq:"Розетка 220 В. Не заменяет полноценное отопление.",tg:["Для небольшого бюджета"]},
+{id:7,n:"Вакуумный солнечный водонагреватель",c:1,i:"☀️",p:45000,in:8000,t:H,g:["hot","renew","elec"],nd:["sun"],s:[900,1800],roof:1,d:"Нагревает воду от солнца в тёплый сезон и подогревает зимой.",rq:"Нужна крыша или участок с южной стороной; монтаж с подключением к водопроводу.",tg:["Для частного дома","Требует профессиональной установки"]},
+{id:8,n:"Двойное остекление ПВХ (комплект)",c:4,i:"🪟",p:70000,in:10000,t:A,g:["heat","eff"],nd:[],pct:[.1,.2],bill:"heat",s:[800,1800],heat:1,d:"Окна с двумя камерами заметно снижают теплопотери.",rq:"Замеры и монтаж специалистами.",tg:["Экономия на отоплении","Требует профессиональной установки"]},
+{id:9,n:"Утепление фасада дома",c:4,i:"🏠",p:180000,in:0,t:H,g:["heat","eff"],nd:[],pct:[.2,.35],bill:"heat",s:[3000,5500],heat:1,d:"Слой утеплителя снаружи уменьшает затраты на отопление на годы вперёд.",rq:"Нужны леса и бригада; цена в демо включает работы.",tg:["Для частного дома","Экономия на отоплении","Требует профессиональной установки"]},
+{id:10,n:"Солнечная панель 1 кВт (сетевая)",c:0,i:"🔆",p:85000,in:15000,t:H,g:["elec","renew"],nd:["sun","electricity"],pct:[.3,.6],bill:"elec",s:[1200,2200],roof:1,d:"Небольшая станция покрывает часть дневного потребления.",rq:"Нужна крыша, подключение к сети и согласование; ночью не работает.",tg:["Для частного дома","Требует профессиональной установки"]},
+{id:11,n:"Тепловой насос «воздух–воздух»",c:2,i:"❄️",p:130000,in:20000,t:H,g:["heat","eff"],nd:["electricity"],pct:[.3,.5],bill:"heat",s:[2500,4500],heat:1,d:"Берёт тепло из уличного воздуха; эффективен при умеренных морозах.",rq:"Профессиональный монтаж; в сильные морозы эффективность падает.",tg:["Для частного дома","Экономия на отоплении","Требует профессиональной установки"]},
+{id:12,n:"Малый ветрогенератор 1 кВт",c:5,i:"🌬️",p:60000,in:12000,t:H,g:["elec","renew"],nd:["wind"],s:[400,1500],roof:1,d:"Подходит для открытых мест с устойчивым ветром.",rq:"Нужна мачта и измерение ветра; выработка очень зависит от места.",tg:["Требует профессиональной установки"]},
+{id:13,n:"Солнечная станция 5 кВт + аккумулятор",c:0,i:"🔋",p:420000,in:50000,t:H,g:["elec","renew"],nd:["sun","electricity"],pct:[.6,.95],bill:"elec",s:[5000,9000],roof:1,d:"Почти полная независимость от сети, резерв при отключениях.",rq:"Большая крыша или участок, проект и профессиональный монтаж.",tg:["Для частного дома","Требует профессиональной установки"]},
+{id:14,n:"Аккумулятор LiFePO4 5 кВт·ч",c:6,i:"🔌",p:180000,in:10000,t:H,g:["renew","eff"],nd:["electricity"],s:null,roof:0,d:"Хранит энергию для резерва. Сам по себе экономию даёт не всегда.",rq:"Экономия зависит от тарифов и наличия солнечных панелей.",tg:["Требует профессиональной установки"]},
+{id:15,n:"Биогазовая установка для хозяйства",c:9,i:"🌱",p:250000,in:40000,t:["house","dacha"],g:["heat","renew"],nd:["bio"],s:[2500,5000],d:"Перерабатывает навоз в газ для кухни и отопления; нужен регулярный запас сырья.",rq:"Нужны скот и место; обслуживание и подготовка сырья.",tg:["Для частного дома","Требует профессиональной установки"]},
+{id:16,n:"Эко-душевая лейка и дозатор воды",c:8,i:"💧",p:1200,in:0,t:A,g:["water","hot"],nd:[],s:[100,300],d:"Снижает расход воды и затраты на её нагрев.",rq:"Ставится вручную.",tg:["Для небольшого бюджет"+"а"]}];
+const $=s=>document.querySelector(s),fm=n=>Math.round(n).toLocaleString("ru-RU").replace(/\u00a0/g," ")+" с";
+const S={fav:new Set(),cmp:[],q:{step:0,housing:null,region:null,goals:[],budget:null,custom:"",res:[],elec:"",heat:"",roof:"",inst:"",wish:""},f:{s:"",c:"",h:"",g:"",max:"",sort:"p"},res:null};
+// расчёт: возвращает {lo,hi,basis} в месяц или null
+function monthly(it,u){let k=1;if(it.heat&&u.region)k=REG[u.region]||1;const b=it.bill==="elec"?+u.elec:it.bill==="heat"?+u.heat:0;
+if(b>0&&it.pct)return{lo:b*it.pct[0],hi:b*it.pct[1],basis:"рассчитано от ваших расходов ("+fm(b)+"/мес)"};
+if(it.s)return{lo:it.s[0]*k,hi:it.s[1]*k,basis:"демо-сценарий: расходы не указаны"+(k!==1?", учтён регион":"")};return null}
+const cost=it=>it.p+it.in;
+function payback(it,m){if(!m||m.lo<=0)return"Недостаточно данных";const a=cost(it)/m.hi,b=cost(it)/m.lo,f=x=>x<24?Math.round(x)+" мес.":(x/12).toFixed(1)+" г.";return"≈ "+f(a)+" – "+f(b)}
+const sv=(m)=>m?fm(m.lo)+" – "+fm(m.hi):"—";
+function ico(it){return`<div class="ico">${it.i}</div>`}
+function card(it,u,extra=""){const m=monthly(it,u||{});return`<div class="card" style="display:flex;flex-direction:column">${ico(it)}<div>${it.tg.map(t=>`<span class="tag ${t[0]=="Т"?"w2":""}">${t}</span>`).join("")}</div><h3>${it.n}</h3><p class="mu sm">${it.d}</p>
+<div class="pr"><span>${CATS[it.c]}</span><b>${fm(cost(it))}</b></div><div class="pr"><span>Подходит</span><b>${it.t.map(x=>HOUS[x]).join(", ")}</b></div>
+<div class="pr"><span>Экономия / мес</span><b>${sv(m)}</b></div><div class="pr"><span>Окупаемость</span><b>${payback(it,m)}</b></div>${extra}
+<div class="row" style="margin-top:auto;padding-top:12px"><button class="btn s" data-a="det" data-id="${it.id}">Подробнее</button><button class="btn s o ${S.cmp.includes(it.id)?"on":""}" data-a="cmp" data-id="${it.id}">${S.cmp.includes(it.id)?"В сравнении":"Сравнить"}</button><button class="btn s o ${S.fav.has(it.id)?"on":""}" data-a="fav" data-id="${it.id}" aria-label="В избранное">${S.fav.has(it.id)?"♥":"♡"}</button></div></div>`}
+const LOGO=`<svg width="30" height="30" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="9" fill="currentColor"/><path d="M16 25c-5 0-8-3.4-8-8 0-5 4-9 11-9 0 7-1.5 10-5 12" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M13 20c1-3 3-5 6-7" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M15 6l-2 4h3l-1.5 4" stroke="#F7F8F4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const ROUTES=[["home","Главная"],["catalog","Каталог"],["greenik","Подбор решений"],["how","Как это работает"],["about","О проекте"],["compare","Сравнение"]];
+function nav(r){$("#nav").innerHTML=`<div class="logo" data-r="home">${LOGO}Greenik</div>`+ROUTES.map(([k,t])=>`<a data-r="${k}" class="${r===k?"on":""}">${t}${k=="compare"&&S.cmp.length?" ("+S.cmp.length+")":""}</a>`).join("")+`<button class="btn s" data-r="greenik">Подобрать решение</button>`}
+function home(){return`<section class="hero"><div><h1>Зелёная энергия, которая выгодна именно тебе</h1><p class="mu" style="font-size:1.1rem">Подбери экологичные решения под свой бюджет, узнай потенциальную экономию и найди технологии, подходящие твоему дому.</p><div class="row"><button class="btn" data-r="greenik">Найти моё решение</button><button class="btn o" data-r="catalog">Изучить каталог</button></div></div>
+<svg viewBox="0 0 400 300" style="width:100%" aria-hidden="true"><circle cx="320" cy="60" r="34" fill="#A8BEA5" opacity=".6"/><path d="M0 250h400" stroke="#A8BEA5" stroke-width="2"/><path d="M70 250V140l130-80 130 80v110z" fill="var(--card)" stroke="var(--g)" stroke-width="3" stroke-linejoin="round"/><path d="M110 118l90-56 90 56" stroke="var(--g)" stroke-width="3" fill="none"/><g fill="var(--g)" opacity=".9"><path d="M135 108l45-28 14 8-45 28z"/><path d="M200 80l35 22-45 28-14-8z"/></g><rect x="170" y="180" width="60" height="70" rx="6" fill="var(--soft)" stroke="var(--g)" stroke-width="2"/><rect x="95" y="170" width="45" height="38" rx="5" fill="var(--soft)" stroke="var(--g)" stroke-width="2"/><rect x="260" y="170" width="45" height="38" rx="5" fill="var(--soft)" stroke="var(--g)" stroke-width="2"/><path d="M355 250v-70M355 180l-22-8M355 180l18-14M355 180l4 24" stroke="var(--g)" stroke-width="3" stroke-linecap="round"/></svg></section>
+<section class="sec"><h2>Что ты хочешь улучшить?</h2><div class="grid g4">${[["💡","Снизить расходы на электричество","elec"],["🔥","Экономить на отоплении","heat"],["☀️","Использовать солнечную энергию","renew"],["💧","Сократить расход воды","water"]].map(([i,t,g])=>`<div class="card opt" role="button" tabindex="0" data-a="goal" data-g="${g}"><div class="ico">${i}</div><b>${t}</b></div>`).join("")}</div></section>
+<section class="sec"><div class="card" style="background:var(--soft)"><h2>Что можно улучшить при бюджете 10 000 сомов?</h2><p class="mu">Запусти демонстрацию: Greenik подберёт доступные решения для квартиры в Бишкеке.</p><button class="btn" data-a="demo">Запустить демонстрацию</button></div></section>
+<section class="sec"><h2>Популярные решения</h2><div class="grid">${[1,3,7,10].map(id=>card(D.find(x=>x.id===id),{})).join("")}</div></section>
+<section class="sec"><h2>Почему Greenik</h2><div class="grid g4">${[["Подбор по бюджету","Не предлагаем станцию за 400 000 тем, у кого 10 000."],["Прозрачные расчёты","Показываем диапазон и откуда взяты числа."],["Честно об ограничениях","У каждого решения указаны минусы и условия."],["Условия Кыргызстана","Холодные зимы, регионы, квартиры и частные дома."]].map(([t,d])=>`<div class="card"><h3>${t}</h3><p class="mu sm">${d}</p></div>`).join("")}</div></section>
+<section class="sec"><div class="card" style="text-align:center;padding:36px"><h2>Решения, которые подходят именно тебе</h2><button class="btn" data-r="greenik">Подобрать решение</button></div></section>`}
+function filtered(){const f=S.f,s=f.s.trim().toLowerCase();let r=D.filter(i=>(!s||(i.n+i.d+GOALS[i.g[0]]).toLowerCase().includes(s))&&(f.c===""||i.c==f.c)&&(!f.h||i.t.includes(f.h))&&(!f.g||i.g.includes(f.g))&&(!f.max||cost(i)<=+f.max));
+const mid=i=>{const m=monthly(i,{});return m?(m.lo+m.hi)/2:0};
+r.sort((a,b)=>f.sort=="p"?cost(a)-cost(b):f.sort=="s"?mid(b)-mid(a):(cost(a)/(mid(a)||1e-9))-(cost(b)/(mid(b)||1e-9)));return r}
+const opts=(o,v,ph)=>`<option value="">${ph}</option>`+Object.entries(o).map(([k,t])=>`<option value="${k}" ${v==k?"selected":""}>${t}</option>`).join("");
+function catalog(){const f=S.f;return`<section class="sec"><h2>Каталог</h2><p class="mu">Цены и экономия — демонстрационные, ориентировочные.</p><div class="filters"><input id="fs" placeholder="Поиск по названию и назначению" value="${f.s}"><select data-f="c">${opts(Object.fromEntries(CATS.map((c,i)=>[i,c])),f.c,"Все категории")}</select><select data-f="h">${opts(HOUS,f.h,"Любое жильё")}</select><select data-f="g">${opts(GOALS,f.g,"Любая цель")}</select><input data-f="max" type="number" min="0" placeholder="Бюджет до, сомов" value="${f.max}"><select data-f="sort"><option value="p" ${f.sort=="p"?"selected":""}>По стоимости</option><option value="s" ${f.sort=="s"?"selected":""}>По экономии</option><option value="r" ${f.sort=="r"?"selected":""}>По окупаемости</option></select></div><div id="cl"></div></section>`}
+function catList(){const r=filtered();$("#cl").innerHTML=r.length?`<div class="grid">${r.map(i=>card(i,{})).join("")}</div>`:`<div class="card" style="text-align:center"><h3>Ничего не найдено</h3><p class="mu">Измените запрос или увеличьте бюджет.</p><button class="btn s" data-a="reset">Сбросить фильтры</button></div>`}
+const QS=["Где ты живёшь?","В каком регионе?","Что хочешь улучшить?","Какой у тебя бюджет?","Какие источники энергии доступны?","Дополнительная информация"];
+const BUD=[["До 5 000 сомов",5000],["5 000–20 000 сомов",20000],["20 000–50 000 сомов",50000],["50 000–150 000 сомов",150000],["Более 150 000 сомов",1e7]];
+function opt(on,t,a,v,ic=""){return`<button class="opt ${on?"on":""}" data-a="${a}" data-v="${v}">${ic} ${t}</button>`}
+function greenik(){const q=S.q,st=q.step;let b="",skip=[1,4,5].includes(st);
+if(st==0)b=Object.entries(HOUS).map(([k,t])=>opt(q.housing==k,t,"housing",k)).join("");
+if(st==1)b=Object.keys(REG).map(r=>opt(q.region==r,r,"region",r)).join("");
+if(st==2)b=Object.entries(GOALS).map(([k,t])=>opt(q.goals.includes(k),t,"goal2",k)).join("");
+if(st==3)b=BUD.map(([t,v])=>opt(q.budget==v&&!q.custom,t,"bud",v)).join("")+`<div class="opt" style="cursor:default"><label class="sm mu">Другой бюджет, сомов</label><input id="cb" type="number" min="0" value="${q.custom}" style="width:100%"><div class="err" id="ce"></div></div>`;
+if(st==4)b=Object.entries(RES).map(([k,t])=>opt(q.res.includes(k),t,"res",k)).join("");
+if(st==5)b=`<div class="opt" style="cursor:default"><label class="sm mu">Электричество, сомов/мес</label><input id="ce1" type="number" min="0" value="${q.elec}" style="width:100%"><div class="err" id="e1"></div></div><div class="opt" style="cursor:default"><label class="sm mu">Отопление, сомов/мес</label><input id="ce2" type="number" min="0" value="${q.heat}" style="width:100%"><div class="err" id="e2"></div></div><div class="opt" style="cursor:default"><label class="sm mu">Есть своя крыша или участок?</label><select id="roof" style="width:100%">${["","yes","no"].map(v=>`<option value="${v}" ${q.roof==v?"selected":""}>${{"":"Не указано",yes:"Да",no:"Нет"}[v]}</option>`).join("")}</select></div><div class="opt" style="cursor:default"><label class="sm mu">Можно устанавливать оборудование?</label><select id="inst" style="width:100%">${["","yes","no"].map(v=>`<option value="${v}" ${q.inst==v?"selected":""}>${{"":"Не указано",yes:"Да",no:"Нет, только простые решения"}[v]}</option>`).join("")}</select></div>`;
+return`<section class="sec" style="max-width:780px;margin:auto"><div class="row"><div class="av">${LOGO.replace("currentColor","transparent")}</div><div><b>Найди своё решение с Greenik</b><div class="mu sm">Ответь на несколько вопросов — подберу решения под твой бюджет</div></div></div><div class="bar"><i style="width:${(st+1)/6*100}%"></i></div><h2>${QS[st]}</h2><div class="mu sm">Шаг ${st+1} из 6</div><div class="opts">${b}</div><div class="row">${st?`<button class="btn o" data-a="back">Назад</button>`:""}${skip?`<button class="btn o" data-a="skip">Пропустить</button>`:""}<button class="btn" data-a="next">${st==5?"Показать решения":"Далее"}</button></div><div class="err" id="se"></div></section>`}
+function recommend(){const u=S.q,bud=u.custom?+u.custom:(u.budget||1e9),res=u.res.length&&!u.res.includes("unknown")?u.res:null;
+let L=D.filter(i=>i.t.includes(u.housing||"house")&&(!u.goals.length||i.g.some(g=>u.goals.includes(g)))&&(!res||i.nd.every(n=>res.includes(n)))&&!(u.roof=="no"&&i.roof)&&!(u.inst=="no"&&i.in>0)&&cost(i)<=bud);
+L=L.map(i=>({i,m:monthly(i,u)}));const w=L.filter(x=>x.m),mid=x=>(x.m.lo+x.m.hi)/2;const used=new Set(),pk=[];
+const add=(lab,x)=>{if(x&&!used.has(x.i.id)){used.add(x.i.id);pk.push({lab,...x})}};
+add("Самый доступный вариант",[...w].sort((a,b)=>cost(a.i)-cost(b.i))[0]);
+add("Оптимальный вариант",[...w].filter(x=>!used.has(x.i.id)).sort((a,b)=>cost(a.i)/mid(a)-cost(b.i)/mid(b))[0]);
+add("Максимальная потенциальная экономия",[...w].filter(x=>!used.has(x.i.id)).sort((a,b)=>mid(b)-mid(a))[0]);
+S.res={pk,n:L.length,bud:u.custom?+u.custom:u.budget,alt:L.length?null:D.filter(i=>i.t.includes(u.housing||"house")&&(!u.goals.length||i.g.some(g=>u.goals.includes(g)))).sort((a,b)=>cost(a)-cost(b)).slice(0,2)}}
+function why(x,u){const i=x.i,p=[];if(u.goals.length)p.push("соответствует цели «"+GOALS[i.g.find(g=>u.goals.includes(g))||i.g[0]].toLowerCase()+"»");p.push("стоит "+fm(cost(i))+(u.budget?" — в рамках бюджета":""));if(i.heat&&u.region&&REG[u.region]>1)p.push("в регионе «"+u.region+"» зима холоднее, потери тепла выше");return"Подходит: "+p.join("; ")+"."}
+function results(){if(!S.res)recommend();const r=S.res,u=S.q;const lo=r.pk.reduce((s,x)=>s+x.m.lo,0),hi=r.pk.reduce((s,x)=>s+x.m.hi,0);
+const st=(t,v)=>`<div class="card stat"><span class="mu sm">${t}</span><b>${v}</b></div>`;
+let h=`<section class="sec"><h2>Твои персональные решения</h2><p class="mu">Мы подобрали решения для твоего дома. Экономия — расчётный сценарий, а не гарантия.</p><div class="grid g4">${st("Твой бюджет",r.bud&&r.bud<1e7?fm(r.bud):r.bud?"более 150 000 с":"не указан")}${st("Подходящих решений",r.n)}${st("Экономия в месяц",r.pk.length?fm(lo)+" – "+fm(hi):"—")}${st("Экономия в год",r.pk.length?fm(lo*12)+" – "+fm(hi*12):"—")}</div></section>`;
+if(!r.pk.length)h+=`<section class="sec"><div class="card"><h3>В рамках бюджета ничего не найдено</h3><p class="mu">Попробуй увеличить бюджет, выбрать другую цель или разрешить установку оборудования.</p>${r.alt&&r.alt.length?`<p>Самые доступные варианты из каталога:</p><div class="grid">${r.alt.map(i=>card(i,u)).join("")}</div>`:""}</div></section>`;
+else{h+=`<section class="sec"><div class="grid">${r.pk.map(x=>card(x.i,u,`<div class="pr"><span>Основание</span><b class="sm">${x.m.basis}</b></div><p class="sm" style="margin-top:10px"><b style="color:var(--g)">${x.lab}.</b> ${why(x,u)}</p><p class="sm mu">Ограничения: ${x.i.rq}</p>`)).join("")}</div></section>`;
+const o=r.pk[1]||r.pk[0],mm=(o.m.lo+o.m.hi)/2,c=cost(o.i),mx=Math.max(c,mm*60);const pts=[0,1,2,3,4,5].map(y=>[40+y*60,170-(mm*12*y-c)/mx*130-0]);
+const cmpTotal=r.pk.length;
+h+=`<section class="sec"><h3>Накопленная экономия за 5 лет: ${o.i.n}</h3><div class="card"><svg viewBox="0 0 400 200" style="width:100%"><path d="M40 170H380M40 20V170" stroke="var(--bd)"/><polyline fill="none" stroke="var(--g)" stroke-width="3" points="${pts.map(p=>p.join(",")).join(" ")}"/><line x1="40" x2="380" y1="${170-0}" y2="170" stroke="var(--g2)" stroke-dasharray="4"/>${pts.map((p,y)=>`<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="var(--g)"/><text x="${p[0]}" y="190" font-size="11" text-anchor="middle" fill="var(--mu)">${y} г.</text>`).join("")}</svg><p class="sm mu">Линия — средняя экономия минус первоначальные затраты (${fm(c)}). Когда линия поднимается выше оси, решение окупилось. Расчёт по среднему значению диапазона.</p></div></section>
+<section class="sec"><h3>Расходы до и после (в месяц)</h3><div class="card">${[["Без изменений",1],["С решениями",0]].map(([t,b])=>{const base=Math.max(+u.elec||0,0)+Math.max(+u.heat||0,0),w=b?100:base>0?Math.max(8,(1-(lo+hi)/2/base)*100):0;return base>0?`<div class="sm">${t}${b?"":" ≈ "+fm(Math.max(base-(lo+hi)/2,0))}</div><div class="bar" style="height:14px;margin:4px 0 12px"><i style="width:${w}%"></i></div>`:""}).join("")||'<p class="sm mu">Укажи ежемесячные расходы на шаге 6 — и мы покажем сравнение до и после.</p>'}</div></section>
+<div class="row"><button class="btn" data-a="cmpAll">Сравнить рекомендованные</button><button class="btn o" data-a="edit">Изменить ответы</button></div>`}
+return h+(r.pk.length?"":`<div class="row"><button class="btn o" data-a="edit">Изменить ответы</button></div>`)}
+function compare(){const L=S.cmp.map(id=>D.find(x=>x.id==id));if(L.length<2)return`<section class="sec"><div class="card" style="text-align:center"><h3>Выберите 2–3 устройства</h3><p class="mu">Добавьте их в сравнение в каталоге или в рекомендациях Greenik.</p><button class="btn" data-r="catalog">В каталог</button></div></section>`;
+const u=S.q,M=L.map(i=>monthly(i,u));const rows=[["Общая стоимость",L.map(i=>fm(cost(i)))],["Установка",L.map(i=>i.in?fm(i.in):"своими руками / нет")],["Экономия / мес",M.map(sv)],["Экономия / год",M.map(m=>m?fm(m.lo*12)+" – "+fm(m.hi*12):"—")],["Окупаемость",L.map((i,k)=>payback(i,M[k]))],["Тип жилья",L.map(i=>i.t.map(x=>HOUS[x]).join(", "))],["Ресурсы",L.map(i=>i.nd.length?i.nd.map(x=>RES[x]).join(", "):"не требуются")],["Требования",L.map(i=>i.rq)],["Преимущества",L.map(i=>i.d)]];
+return`<section class="sec"><h2>Сравнение</h2><p class="mu">Лучший вариант зависит от твоих целей и бюджета — таблица показывает различия, а не победителя.</p><div class="sc card"><table><tr><th></th>${L.map(i=>`<th>${i.i} ${i.n}<br><button class="btn s o" data-a="cmp" data-id="${i.id}">Убрать</button></th>`).join("")}</tr>${rows.map(([t,c])=>`<tr class="${new Set(c).size>1?"diff":""}"><th>${t}</th>${c.map(x=>`<td>${x}</td>`).join("")}</tr>`).join("")}</table></div></section>`}
+function how(){return`<section class="sec"><h2>Как это работает</h2><div class="grid g4">${[["🏠","Расскажи о жилье и бюджете","Ответь на несколько простых вопросов. Необязательные можно пропустить."],["✨","Получи рекомендации","Greenik отберёт доступные и подходящие решения и объяснит выбор."],["⚖️","Сравни и реши","Посмотри стоимость, экономию и окупаемость до того, как потратишь деньги."]].map(([i,t,d])=>`<div class="card"><div class="ico">${i}</div><h3>${t}</h3><p class="mu sm">${d}</p></div>`).join("")}</div></section>`+about(1)}
+function about(n){return`<section class="sec">${n?"":"<h2>О проекте</h2>"}<div class="card"><h3>Greenik — помощник, а не просто каталог</h3><p class="mu">Это прототип для хакатона. Подбор работает на правилах и расчётах прямо в браузере; ИИ-модель не подключена, но логику можно перенести на защищённый backend. Формулы: годовая экономия = месячная × 12; окупаемость (мес.) = затраты / месячная экономия. Если данных мало, показываем диапазон или «Недостаточно данных». Все цены демонстрационные.</p></div></section>`}
+function route(){const r=(location.hash||"#home").slice(1);nav(r);const A=$("#app");
+const pages={home,catalog,greenik,how,about:()=>about(0),compare,results};
+if(r=="catalog"){A.innerHTML=`<div class="grid sec">${'<div class="skel"></div>'.repeat(3)}</div>`;setTimeout(()=>{if((location.hash||"").slice(1)=="catalog"){A.innerHTML=catalog();catList()}},350);return}
+A.innerHTML=(pages[r]||home)();window.scrollTo(0,0)}
+function go(r){location.hash=r}
+function refresh(){const r=(location.hash||"#home").slice(1);nav(r);if(r=="catalog")catList();else if(["compare","results","home"].includes(r))$("#app").innerHTML=(r=="compare"?compare:r=="results"?results:home)()}
+function modal(i){const m=monthly(i,S.q);$("#md").innerHTML=`<div class="modal" data-a="close"><div class="card" onclick="event.stopPropagation()">${ico(i)}<h2>${i.n}</h2><div>${i.tg.map(t=>`<span class="tag">${t}</span>`).join("")}</div><p>${i.d}</p><div class="pr"><span>Категория</span><b>${CATS[i.c]}</b></div><div class="pr"><span>Цена устройства</span><b>${fm(i.p)}</b></div><div class="pr"><span>Установка</span><b>${i.in?fm(i.in):"не требуется"}</b></div><div class="pr"><span>Экономия / мес</span><b>${sv(m)}</b></div><div class="pr"><span>Окупаемость</span><b>${payback(i,m)}</b></div><div class="pr"><span>Ресурсы</span><b>${i.nd.length?i.nd.map(x=>RES[x]).join(", "):"не нужны"}</b></div><p class="sm" style="margin-top:12px"><b>Ограничения:</b> ${i.rq}</p><p class="sm mu">Источник: демонстрационные данные. ${m?m.basis:"Недостаточно данных для расчёта экономии."}</p><button class="btn" data-a="close">Закрыть</button></div></div>`}
+function next(){const q=S.q,st=q.step,e=$("#se");e.textContent="";
+if(st==0&&!q.housing)return e.textContent="Выбери тип жилья.";if(st==2&&!q.goals.length)return e.textContent="Выбери хотя бы одну цель.";
+if(st==3){const c=$("#cb").value;if(c!==""){if(!(+c>0)){$("#ce").textContent="Введите сумму больше нуля.";return}q.custom=c}else q.custom="";if(!q.custom&&!q.budget)return e.textContent="Выбери бюджет или введи свою сумму."}
+if(st==5){q.elec=$("#ce1").value;q.heat=$("#ce2").value;q.roof=$("#roof").value;q.inst=$("#inst").value;if(+q.elec<0||+q.heat<0){$("#e1").textContent="Сумма не может быть отрицательной.";return}}
+if(st==5){S.res=null;go("results");return}q.step++;$("#app").innerHTML=greenik()}
+document.addEventListener("click",e=>{const el=e.target.closest("[data-r],[data-a]");if(!el)return;const d=el.dataset,q=S.q,tg=(s,v)=>{const k=s.indexOf(v);k<0?s.push(v):s.splice(k,1)};
+if(d.r)return go(d.r);const a=d.a,id=+d.id;
+if(a=="det")return modal(D.find(x=>x.id==id));if(a=="close"){$("#md").innerHTML="";return}
+if(a=="fav"){S.fav.has(id)?S.fav.delete(id):S.fav.add(id);return refresh()}
+if(a=="cmp"){const k=S.cmp.indexOf(id);if(k>=0)S.cmp.splice(k,1);else if(S.cmp.length<3)S.cmp.push(id);else alert("Можно сравнить до трёх устройств.");return refresh()}
+if(a=="cmpAll"){S.cmp=S.res.pk.map(x=>x.i.id);return go("compare")}
+if(a=="reset"){S.f={s:"",c:"",h:"",g:"",max:"",sort:"p"};return route()}
+if(a=="goal"){S.f={s:"",c:"",h:"",g:d.g,max:"",sort:"p"};return go("catalog")}
+if(a=="demo"){Object.assign(S.q,{step:0,housing:"apt",region:"Бишкек",goals:["elec","water","eff"],budget:10000,custom:"",res:[],elec:"1500",heat:"",roof:"",inst:""});S.res=null;return go("results")}
+if(a=="edit"){q.step=0;return go("greenik")}
+if(a=="next")return next();if(a=="back"){q.step--;return $("#app").innerHTML=greenik()}
+if(a=="skip"){q.step++;if(q.step>5){S.res=null;return go("results")}return $("#app").innerHTML=greenik()}
+if(a=="housing")q.housing=d.v;if(a=="region")q.region=d.v;if(a=="goal2")tg(q.goals,d.v);if(a=="res")tg(q.res,d.v);if(a=="bud"){q.budget=+d.v;q.custom=""}
+$("#app").innerHTML=greenik()});
+document.addEventListener("input",e=>{const t=e.target;if(t.id=="fs"){S.f.s=t.value;catList()}else if(t.dataset.f){S.f[t.dataset.f]=t.value;catList()}});
+addEventListener("hashchange",route);route();
+</script></body></html>
